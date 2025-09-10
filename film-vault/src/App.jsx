@@ -1,19 +1,15 @@
 
 import './App.css'
 import Header from './header/Header';
-
+import Home from './pages/home/Home';
 function App() {
 
-
-  return (
+return (
     <>
-      <Header />
-      <div>
-       Hello World
-      </div>
-     
+      <Home />
     </>
   )
 }
 
 export default App
+     
