@@ -6,8 +6,8 @@ function App() {
 
 return (
     <>
-      <Home />
-      {/* <MovieDetailView /> */}
+      {/* <Home /> */}
+      <MovieDetailView />
     </>
   )
 }
