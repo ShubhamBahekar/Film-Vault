@@ -1,5 +1,7 @@
 import Header from "../../header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
+import MovieCard from "../../shared/components/card/Card";
+import SampleData from "../../SampleData.json";
 import { Box, Stack } from "@mui/material";
 
 
@@ -23,7 +25,7 @@ const MoviesDisplay = () => {
               
             </Stack>
           </Box>
-          
+          <MovieCard movieData={SampleData} />
         </Box>
     
     </>

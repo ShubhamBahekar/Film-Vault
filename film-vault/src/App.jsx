@@ -1,12 +1,13 @@
 
 import './App.css'
-import Header from './header/Header';
 import Home from './pages/home/Home';
+import MovieDetailView from './pages/movieDetails/MovieDetails';
 function App() {
 
 return (
     <>
       <Home />
+      {/* <MovieDetailView /> */}
     </>
   )
 }
