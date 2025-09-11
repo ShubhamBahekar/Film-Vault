@@ -2,12 +2,26 @@ import Header from "../../header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import MovieCard from "../../shared/components/card/Card";
 import SampleData from "../../SampleData.json";
+import useMovies from "../../hooks/useMovies";
 import { Box, Stack } from "@mui/material";
+import { useState,useEffect } from "react";
 
 
 const MoviesDisplay = () => {
+  const [movieData, setMovieData] = useState([])
+  const { getAllMoviesTitle } = useMovies();
 
- 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getAllMoviesTitle();
+      const movies = data.titles;
+      setMovieData(movies);
+      console.log("Fetched Movies:", movies);
+    };
+
+    fetchData();
+  }, [getAllMoviesTitle]);
+
   return (
     <>
       
@@ -25,7 +39,7 @@ const MoviesDisplay = () => {
               
             </Stack>
           </Box>
-          <MovieCard movieData={SampleData} />
+          <MovieCard movieData={movieData} />
         </Box>
     
     </>

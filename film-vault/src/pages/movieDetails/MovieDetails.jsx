@@ -13,12 +13,12 @@ import {
 } from "./MovieDetails.styles";
 import { Chip } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
-import useMovies from "../../hooks/useMovies";
+
 
 import SampleMovieDetailsData from "../../SampleMovieDetailsData.json"
 
 const MovieDetailView = () => {
-  const { getAllMoviesTitle } = useMovies();
+
   const isMobile = useMediaQuery("(max-width:600px)");
 
   // Local states instead of Context
@@ -40,7 +40,7 @@ const MovieDetailView = () => {
       setStats(pokemon.stats);
       setMoves(pokemon.moves);
       setEvolutionSpecies(pokemon.evolutionSpecies);
-      getAllMoviesTitle();
+  
 
   }, []);
 

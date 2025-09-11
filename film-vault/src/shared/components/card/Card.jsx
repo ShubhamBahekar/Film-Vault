@@ -21,16 +21,32 @@ const MovieCard = ({ movieData, onMovieClicked }) => {
           onClick={()=>onMovieClicked(movie.id)}   
         >
           
-          <ImageWrapper className="image-wrapper">
-          </ImageWrapper>
-          <Box display={"flex"} justifyContent={"center"}>
+          {/* <ImageWrapper className="image-wrapper">
+          </ImageWrapper> */}
+          {/* <Box display={"flex"} justifyContent={"center"}>
             <img
-              src={movie.image}
-              alt={movie.name}
+              src={movie.primaryImage?.url}
+              alt={movie.primaryTitle}
               style={{
                 height: "200px",
-                width: "200px",
-                objectFit: "contain",
+                width: "100%",
+                objectFit: "cover",
+                transform: "rotate(0deg)",  
+                transition: "transform 0.3s ease", 
+                pointerEvents: "none",
+              }}
+              
+            />
+       </Box> */}
+
+       <Box display={"flex"} justifyContent={"center"}>
+            <img
+              src={movie.primaryImage?.url}
+              alt={movie.primaryTitle}
+              style={{
+                height: "200px",
+                width: "100%",
+                objectFit: "fill",
                 transform: "rotate(0deg)",  
                 transition: "transform 0.3s ease", 
                 pointerEvents: "none",
@@ -38,6 +54,12 @@ const MovieCard = ({ movieData, onMovieClicked }) => {
               
             />
        </Box>
+
+
+
+
+
+
           <CardContent sx={{color: "pink" }} >
             <Stack
               direction="column"
@@ -46,13 +68,13 @@ const MovieCard = ({ movieData, onMovieClicked }) => {
               spacing={2}
             >
               <Chip
-                label={movie.name}
+                label={movie.primaryTitle}
                 variant="outlined"
                 sx={{ color: "white", fontSize: "1.5rem" ,fontWeight:700}}
               />
 
               <Chip
-                label={movie.types.join(", ")}
+                label={movie.type}
                 variant="outlined"
                 sx={{
                   color: "white",
@@ -62,7 +84,7 @@ const MovieCard = ({ movieData, onMovieClicked }) => {
               />
 
               <Chip
-                label={movie.id}
+                label={movie.startYear}
                 variant="outlined"
                 sx={{ color: "white", fontSize: "1.5rem" }}
               />
