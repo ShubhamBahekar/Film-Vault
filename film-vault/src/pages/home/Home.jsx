@@ -1,7 +1,7 @@
 import Header from "../../header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import MovieCard from "../../shared/components/card/Card";
-import SampleData from "../../SampleData.json";
+// import SampleData from "../../SampleData.json";
 import useMovies from "../../hooks/useMovies";
 import { Box, Stack } from "@mui/material";
 import { useState,useEffect } from "react";

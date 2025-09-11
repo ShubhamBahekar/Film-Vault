@@ -14,67 +14,33 @@ import {
 import { Chip } from "@mui/material";
 import { ArrowDownward } from "@mui/icons-material";
 
-
+import useMovies from "../../hooks/useMovies";
 import SampleMovieDetailsData from "../../SampleMovieDetailsData.json"
 
 const MovieDetailView = () => {
-
+    const { getAllMoviesTitle } = useMovies();
   const isMobile = useMediaQuery("(max-width:600px)");
 
-  // Local states instead of Context
-  const [pokemonImage, setPokemonImage] = useState("");
-  const [pokemonName, setPokemonName] = useState("");
-  const [abilities, setAbilities] = useState([]);
-  const [stats, setStats] = useState([]);
-  const [moves, setMoves] = useState([]);
-  const [evolutionSpecies, setEvolutionSpecies] = useState([]);
-  const [movesInDetail, setMovesInDetail] = useState(false);
 
-  // Mock "fetch" using sample data
+  const [moviesData, setMovieData] = useState([]);
+  
   useEffect(() => {
 
-      const pokemon = SampleMovieDetailsData; // later replace this with Redux data
-      setPokemonImage(pokemon.image);
-      setPokemonName(pokemon.name);
-      setAbilities(pokemon.abilities);
-      setStats(pokemon.stats);
-      setMoves(pokemon.moves);
-      setEvolutionSpecies(pokemon.evolutionSpecies);
-  
 
+    const fetchData = async () => {
+      const data = await getAllMoviesTitle();
+      const movies = data.titles;
+      console.log("Fetched Movies:", movies);
+      setMovieData(movies);
+    };
+    fetchData();
   }, []);
 
-  const handleDetailMoves = () => {
-    setMovesInDetail(!movesInDetail);
-  };
+  
 
   return (
     <ParentTag>
-      {movesInDetail ? (
-        <Box width={"100vw"} height={"auto"}>
-          <MovesDetail>
-            <Box>
-              {moves.map((item, idx) => (
-                <Chip
-                  key={idx}
-                  label={item}
-                  color="success"
-                  sx={{ margin: "0.5rem", textTransform: "capitalize" }}
-                />
-              ))}
-            </Box>
-            <Button
-              onClick={handleDetailMoves}
-              color="info"
-              variant="outlined"
-              sx={{ marginTop: "2rem" }}
-            >
-              Close
-            </Button>
-          </MovesDetail>
-        </Box>
-      ) : (
-        <PaperTag>
+      <PaperTag>
           {isMobile ? (
             <Box
               display={"flex"}
@@ -82,6 +48,8 @@ const MovieDetailView = () => {
               width={"auto"}
               minWidth={"340px"}
             >
+                {moviesData.map((movie) => (
+
               <Card
                 sx={{
                   width: "100%",
@@ -91,104 +59,103 @@ const MovieDetailView = () => {
               >
                 <CardMedia
                   sx={{ height: 390, objectFit: "contain", padding: "2.5%" }}
-                  image={pokemonImage}
-                  title={pokemonName}
+                  image={movie.primaryImage?.url}
+                  title={movie.originalTitle}
                   component={"img"}
                 />
               </Card>
+
+                ))}
+             
             </Box>
           ) : (
-            <>
-              {/* Desktop View */}
-              <Box
-                display={"flex"}
-                flexDirection={"row"}
-                justifyContent={"space-around"}
-                alignItems={"center"}
-              >
-                {/* Abilities */}
-                <Box>
-                  <Typography
-                    variant="h5"
-                    fontWeight={"700"}
-                    color="info"
-                    padding={1}
-                  >
-                    Abilities
-                  </Typography>
-                  <Box
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    flexDirection={"column"}
-                    gap={2}
-                  >
-                    {abilities.map((item, i) => (
-                      <Chip key={i} label={item} color="secondary" />
-                    ))}
-                  </Box>
-                </Box>
+            
+           <>
+  {moviesData.length > 0 && (
+    <Box
+      display="flex"
+      flexDirection="row"
+      justifyContent="space-around"
+      alignItems="center"
+    >
+      <Box>
+        <Typography
+          variant="h4"
+          fontWeight="700"
+          color="info"
+          padding={1}
+        >
+          Genres
+        </Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          gap={2}
+        >
+          {moviesData[0].genres?.map((genre, i) => (
+            <Chip key={i} label={genre} color="secondary" />
+          ))}
+        </Box>
+      </Box>
+      <CardMedia
+        sx={{ maxHeight: 320, maxWidth: 380, objectFit: "fill" }}
+        image={moviesData[0].primaryImage?.url}
+        title={moviesData[0].originalTitle}
+        component="img"
+      />
 
-                {/* Pokémon Image */}
-                <CardMedia
-                  sx={{ maxHeight: 320, maxWidth: 280, objectFit: "contain" }}
-                  image={pokemonImage}
-                  title={pokemonName}
-                  component={"img"}
-                />
+    
+     <Box>
+        <Typography
+          variant="h4"
+          fontWeight="700"
+          color="info"
+          padding={1}
+        >
+          Rating
+        </Typography>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexDirection="column"
+          gap={2}
+        >
+            <Typography color="white">Aggregate: <Chip  label={moviesData[0].rating.aggregateRating} color="secondary" /></Typography>
 
-                {/* Evolution Chain */}
-                <Box>
-                  <Typography
-                    variant="h5"
-                    fontWeight={"700"}
-                    color="info"
-                    padding={1}
-                  >
-                    Evolution-Chain
-                  </Typography>
-                  <Box
-                    display={"flex"}
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    flexDirection={"column"}
-                    gap={2}
-                  >
-                    {evolutionSpecies.map((item, idx) => (
-                      <React.Fragment key={idx}>
-                        <Chip label={item} color="secondary" sx={{ padding: 0 }} />
-                        {idx < evolutionSpecies.length - 1 && (
-                          <Box display="flex" justifyContent="center">
-                            <ArrowDownward color="error" />
-                          </Box>
-                        )}
-                      </React.Fragment>
-                    ))}
-                  </Box>
-                </Box>
-              </Box>
-            </>
+            <Typography color="white">Votes: <Chip  label={moviesData[0].rating.voteCount} color="secondary" /></Typography>
+          </Box>
+      </Box>
+    </Box>
+  )}
+</>
+
           )}
 
-          {/* Stats + Moves */}
-          <CardContent>
-            <Box
-              marginBottom={"0.5rem"}
-              display={"flex"}
+    
+          {moviesData && moviesData.length > 0 && (
+            <CardContent>
+              <Box
+                marginBottom={"0.5rem"}
+                display={"flex"}
               flexDirection={"column"}
               justifyContent={"center"}
             >
               <Box display={"flex"} justifyContent={"center"}>
                 <Typography
                   variant="h3"
-                  color="warning"
+                  color="white"
                   fontWeight={"700"}
                   padding={1}
                 >
-                  {pokemonName}
+                  {moviesData[0].originalTitle}
                 </Typography>
               </Box>
               <FancyDivider />
+
+
 
               <Box
                 display={"flex"}
@@ -197,70 +164,46 @@ const MovieDetailView = () => {
                 columnGap={3}
                 rowGap={1}
               >
-                {stats?.map((stat, i) => (
+                {moviesData && moviesData.length > 0 && (
                   <Box
-                    key={i}
+                 
                     display={"flex"}
-                    justifyContent={"space-around"}
+                    // justifyContent={"space-around"}
                     alignItems={"center"}
-                    flexDirection={"column"}
+                    flexDirection={"row"}
                     columnGap={3}
                   >
-                    <Typography
-                      fontSize={"1.2rem"}
-                      color="primary"
-                      textTransform={"capitalize"}
-                    >
-                      {stat.name}: <strong>{stat.value}</strong>
-                    </Typography>
-                    <Box position="relative" display="inline-flex">
-                      <CircularProgress
-                        variant="determinate"
-                        value={Math.min((stat.value / 100) * 100, 100)}
-                        thickness={6}
-                        size={80}
-                        sx={{ color: "#ff7043" }}
-                      />
-                      <Box
-                        top={0}
-                        left={0}
-                        bottom={0}
-                        right={0}
-                        position="absolute"
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="center"
-                      >
-                        <Typography
-                          variant="subtitle2"
-                          component="div"
-                          color="success"
-                        >
-                          {`${Math.round(
-                            Math.min((stat.value / 100) * 100, 100)
-                          )}%`}
-                        </Typography>
-                      </Box>
-                    </Box>
+                    <Typography color="white">Id: <Chip  label={moviesData[0].id} color="secondary" /></Typography>
+
+                     <Typography color="white">Type: <Chip  label={moviesData[0].type} color="secondary" /></Typography>
+
+                      <Typography color="white">Start Year: <Chip  label={moviesData[0].startYear} color="secondary" /></Typography>
+
+                       <Typography color="white">Runtime Seconds: <Chip  label={moviesData[0].runtimeSeconds} color="secondary" /></Typography>
+                    
                   </Box>
-                ))}
+                )}
               </Box>
+
+
+
+
             </Box>
             <FancyDivider />
             <Box>
-              <Typography variant="h6" color="info" fontWeight={"700"}>
-                Moves:
+              <Typography variant="h4" color="info" fontWeight={"700"}>
+                Plot:
               </Typography>
-              <Box display="flex" gap={2} flexWrap="wrap">
-                {moves.slice(0, 5).map((item, idx) => (
-                  <Chip key={idx} label={item} color="success" />
-                ))}
-                <Button onClick={handleDetailMoves}>View More</Button>
-              </Box>
+              <Typography variant="h6" color="white" fontWeight={"500"}>
+                {moviesData[0].plot}
+              </Typography>
             </Box>
           </CardContent>
+
+          )}
+
+          
         </PaperTag>
-      )}
     </ParentTag>
   );
 };
