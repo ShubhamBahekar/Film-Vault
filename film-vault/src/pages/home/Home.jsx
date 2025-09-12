@@ -12,7 +12,7 @@ import { useEffect } from "react";
 const MoviesDisplay = () => {
   
   const {items:movies,status} = useSelector((state) => state.movies);
-  // console.log("Movies from Redux Store:", movies);
+  console.log("Movies from Redux Store:", movies);
   const dispatch = useDispatch();
 
 useEffect(() => {

@@ -13,7 +13,7 @@ const MovieCard = ({ movieData, onMovieClicked }) => {
 
   return (
     <ParentBox>
-      {movieData.titles.map((movie, index) => (
+      {movieData.map((movie, index) => (
         <CardTag
           key={index}
           onClick={()=>onMovieClicked(movie.id)}   

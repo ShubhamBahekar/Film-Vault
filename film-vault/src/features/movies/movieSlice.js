@@ -17,7 +17,7 @@ const movieSlice = createSlice({
             state.status = 'loading';
         }).addCase(fetchMovies.fulfilled,(state,action)=>{
             state.status = 'succeeded';
-            state.items = action.payload;
+            state.items = action.payload.titles || [];
         }).addCase(fetchMovies.rejected,(state)=>{
             state.status = 'failed'; 
         });
