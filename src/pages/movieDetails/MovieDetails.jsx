@@ -41,7 +41,7 @@ const ResponsivePoster = ({ src, alt, isMobile, isTablet }) => (
       alt={alt}
       sx={{
         height: isMobile ? 280 : 320,
-        objectFit: "contain",
+        objectFit: "fill",
         borderRadius: "0.5rem",
       }}
     />
