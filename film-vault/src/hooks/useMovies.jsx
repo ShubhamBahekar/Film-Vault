@@ -1,18 +1,18 @@
-import { getMoviesByTitle} from "../services/authServices";
-import { useCallback } from "react";
+// import { getMoviesByTitle} from "../services/authServices";
+// import { useCallback } from "react";
 
-const useMovies = () => {
+// const useMovies = () => {
 
-  const getAllMoviesTitle = useCallback(async () => {
-    const response = await getMoviesByTitle();
-    console.log("Movies title", response);
-    return response;
-  }, []);
+//   const getAllMoviesTitle = useCallback(async () => {
+//     const response = await getMoviesByTitle();
+//     console.log("Movies title", response);
+//     return response;
+//   }, []);
   
   
-  return {
-    getAllMoviesTitle
-  };
-};
+//   return {
+//     getAllMoviesTitle
+//   };
+// };
 
-export default useMovies;
+// export default useMovies;

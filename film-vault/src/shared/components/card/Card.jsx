@@ -10,12 +10,10 @@ import { ParentBox, CardTag , ImageWrapper} from "./Card.styles";
 
 const MovieCard = ({ movieData, onMovieClicked }) => {
 
-  
-
 
   return (
     <ParentBox>
-      {movieData.map((movie, index) => (
+      {movieData.titles.map((movie, index) => (
         <CardTag
           key={index}
           onClick={()=>onMovieClicked(movie.id)}   
