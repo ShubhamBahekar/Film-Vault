@@ -16,7 +16,7 @@ const MovieCard = ({ movieData, onMovieClicked }) => {
       {movieData.map((movie, index) => (
         <CardTag
           key={index}
-          onClick={()=>onMovieClicked(movie.id)}   
+          onClick={()=>onMovieClicked(movie)}   
         >
           
           {/* <ImageWrapper className="image-wrapper">

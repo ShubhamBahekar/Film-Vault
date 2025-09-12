@@ -1,43 +1,104 @@
-import React from "react";
-import { TextField } from "@mui/material";
-// import { useContext } from "react";
-// import { pokemonContext } from "../../PokemonContextProvider/PokemonContextProvider";
+// import React from "react";
+// import { TextField } from "@mui/material";
+// import { useDispatch } from "react-redux";
+// import { setSearchTerm } from "../../../features/movies/movieSlice";
+// const SearchBar = () => {
+
+
+//   const dispatch = useDispatch();
+//   const searchTextField = {
+//   "& .MuiOutlinedInput-root": {
+//     borderRadius: "1rem",
+//      color:"white",
+//     "& fieldset": {
+//       borderColor: "white",
+//       borderWidth: "3px"
+//     },
+//     "&:hover fieldset": {
+//       borderColor: "white",
+//     },
+//     "&.Mui-focused fieldset": {
+//       borderColor: "white",
+//     },
+//   },
+//   "& .MuiInputLabel-root": {
+//     color: "white", 
+//   },
+//   "& .MuiInputLabel-root.Mui-focused": {
+//     color: "white", 
+//   },
+// };
+
+
+//   return (
+//     <TextField
+//       label="Search"
+//       variant="outlined"
+//       size="small"
+//       sx={{ width: "30rem", ...searchTextField}}
+//       onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+//     />
+//   );
+// };
+
+// export default SearchBar;
+
+import React, { useState } from "react";
+import { TextField, Box } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setSearchTerm, addSearchToHistory } from "../../../features/movies/movieSlice";
+
 const SearchBar = () => {
-//   const { handlePokemonSearch, searchText } = useContext(pokemonContext);
+  const dispatch = useDispatch();
+  const [inputValue, setInputValue] = useState("");
 
   const searchTextField = {
-  "& .MuiOutlinedInput-root": {
-    borderRadius: "1rem",
-     color:"white",
-    "& fieldset": {
-      borderColor: "white",
-      borderWidth: "3px"
+    "& .MuiOutlinedInput-root": {
+      borderRadius: "1rem",
+      color: "white",
+      "& fieldset": {
+        borderColor: "white",
+        borderWidth: "3px",
+      },
+      "&:hover fieldset": {
+        borderColor: "white",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "white",
+      },
     },
-    "&:hover fieldset": {
-      borderColor: "white",
+    "& .MuiInputLabel-root": {
+      color: "white",
     },
-    "&.Mui-focused fieldset": {
-      borderColor: "white",
+    "& .MuiInputLabel-root.Mui-focused": {
+      color: "white",
     },
-  },
-  "& .MuiInputLabel-root": {
-    color: "white", 
-  },
-  "& .MuiInputLabel-root.Mui-focused": {
-    color: "white", 
-  },
-};
+  };
 
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+    dispatch(setSearchTerm(e.target.value));
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && inputValue.trim()) {
+      dispatch(addSearchToHistory(inputValue));
+      e.target.blur();
+    }
+  };
 
   return (
-    <TextField
-      label="Search"
-      variant="outlined"
-      size="small"
-      sx={{ width: "30rem", ...searchTextField}}
-    //   value={searchText}
-    //   onChange={handlePokemonSearch}
-    />
+    <Box sx={{ width: "25rem" }}>
+      <TextField
+        label="Search"
+        variant="outlined"
+        size="small"
+        sx={{ width: "100%", ...searchTextField }}
+        value={inputValue}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown}
+      />
+    </Box>
   );
 };
 
