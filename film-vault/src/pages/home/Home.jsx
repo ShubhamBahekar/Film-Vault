@@ -2,11 +2,12 @@ import Header from "../../header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import MovieCard from "../../shared/components/card/Card";
 // import SampleData from "../../SampleData.json";
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 // import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchMovies } from "../../features/movies/movieSlice";
+import StatusMessage from "../../shared/components/statusMessage/StatusMessage";
 import { useEffect } from "react";
 
 const MoviesDisplay = () => {
@@ -22,12 +23,9 @@ useEffect(() => {
 }, [status]);
   
 
-if (status === 'loading') {
-  return <div>Loading...</div>;
-}
-if (status === 'failed') {
-  return <div>Error loading movies.</div>;
-}
+if (status === "loading") return <StatusMessage message="Loading..." />;
+if (status === "failed") return <StatusMessage message="Error loading movies." />;
+
 
   return (
     <>
