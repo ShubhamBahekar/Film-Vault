@@ -19,7 +19,7 @@ export const CardTag = styled(Card)(({ theme }) => ({
   marginTop: "3%",
   borderRadius: "10%",
   boxShadow:"rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px",
-  // backgroundColor: theme.palette.background.paper,
+ 
   backgroundColor: "#4D4548",
   transition: "transform 0.3s ease, box-shadow 0.3s ease",
   "&:hover": {

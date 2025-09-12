@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@mui/material";
 
 const CustomButton = ({ label, onClick, variant = "contained", sx = {}, ...props }) => {

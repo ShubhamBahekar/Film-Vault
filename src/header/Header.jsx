@@ -3,9 +3,8 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import AdbIcon from '@mui/icons-material/Adb';
-import HomeIcon from '@mui/icons-material/Home';
-import { Box, IconButton } from '@mui/material';
+
+import { Box} from '@mui/material';
 import MovieIcon from '@mui/icons-material/Movie';
 
 

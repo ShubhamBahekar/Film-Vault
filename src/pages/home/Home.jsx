@@ -1,7 +1,7 @@
 import Header from "../../header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import MovieCard from "../../shared/components/card/Card";
-import { Box, Stack, Button } from "@mui/material";
+import { Box, Stack} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { fetchMovies, setSelectedMovie, selectFilteredMovies } from "../../features/movies/movieSlice";
