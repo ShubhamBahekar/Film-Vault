@@ -12,6 +12,7 @@ export const ParentBox = styled(Box)(() => ({
   marginBottom:"1rem",
   height: "auto",
   position: "relative",
+  cursor: "pointer",
 }));
 
 export const CardTag = styled(Card)(({ theme }) => ({
