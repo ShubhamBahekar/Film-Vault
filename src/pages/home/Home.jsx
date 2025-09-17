@@ -1,4 +1,4 @@
-import Header from "../../header/Header";
+import Header from "../../shared/components/header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import MovieCard from "../../shared/components/card/Card";
 import { Box, Stack} from "@mui/material";
