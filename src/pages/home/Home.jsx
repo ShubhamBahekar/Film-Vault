@@ -1,4 +1,4 @@
-import Header from "../../shared/components/header/Header";
+// import Header from "../../shared/components/header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import MovieCard from "../../shared/components/card/Card";
 import { Box, Stack} from "@mui/material";
@@ -26,7 +26,7 @@ const MoviesDisplay = () => {
 
   const handleMovieClicked = (movie) => {
     dispatch(setSelectedMovie(movie));
-    navigate(`/movie-details/${movie.id}`);
+    navigate(`/movie/${movie.id}`);
   };
 
   const handleLoadMore = () => {
@@ -37,8 +37,8 @@ const MoviesDisplay = () => {
   if (status === "failed") return <StatusMessage message="Error loading movies." />;
 
   return (
-    <Box bgcolor={"#3D3539"} minHeight={"100vh"}>
-      <Header />
+    <Box>
+      {/* <Header /> */}
 
       <Box sx={{ marginTop: "1rem" }}>
         <Stack

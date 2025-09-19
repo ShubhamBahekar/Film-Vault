@@ -29,7 +29,7 @@ const LoginPage = () => {
   const handleLogin = () => {
     if (form.username.trim() && form.password.trim()) {
       dispatch(login({ username: form.username }));
-      navigate("/");
+      navigate("/home");
     } else {
       alert("Enter valid credentials");
     }

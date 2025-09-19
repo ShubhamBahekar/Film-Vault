@@ -6,11 +6,10 @@ import {Paper} from "@mui/material";
 
 export const ParentTag = styled(Box)(({theme})=>({
   display:"flex",
-  width:"100vw" ,
-  height:"100vh", 
+  width:"100%" ,
+   height:"100vh", 
   justifyContent:"center",
   alignItems:"center",
-background:"linear-gradient(to right top, #070411, #07101a, #05191f, #062021, #0e2620)",
 
 
  [theme.breakpoints.up("md")]:{
@@ -24,23 +23,24 @@ export const PaperTag = styled(Paper)(({theme})=>({
   backgroundColor: "#4D4548",
   background:"linear-gradient(to right top, #232030, #37202d, #422522, #402f19, #323b1e)",
   width:"100vw",
-  maxHeight: "100vh",
+  height:"100vh",
+  maxHeight: "100%",
   overflow:"auto",
   textTransform:"capitalize",
 
   [theme.breakpoints.up("md")]:{
-    width:"100vw",
+    width:"100%",
       borderRadius: "1rem",
-       maxHeight: "100vh",
+      //  maxHeight: "100vh",
   },
   [theme.breakpoints.up("lg")]:{
-    width:"100vw",
+    width:"100%",
       borderRadius: "1rem",
-      maxHeight: "100vh",
+      // maxHeight: "100vh",
   },
   [theme.breakpoints.up("xl")]:{
-    width:"100vw",
-    maxHeight: "100vh",
+    width:"100%",
+    // maxHeight: "100vh",
     
   }
 }))

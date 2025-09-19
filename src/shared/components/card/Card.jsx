@@ -35,9 +35,6 @@ const MovieCard = ({ movieData, onMovieClicked }) => {
 
 
 
-
-
-
           <CardContent sx={{color: "pink" }} >
             <Stack
               direction="column"

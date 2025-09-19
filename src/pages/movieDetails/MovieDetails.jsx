@@ -2,6 +2,7 @@ import { Box, Card, CardContent, CardMedia, Typography, Chip, useMediaQuery } fr
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { ParentTag, PaperTag, FancyDivider } from "./MovieDetails.styles";
+import Header from "../../shared/components/header/Header";
 
 
 const InfoSection = ({ title, children }) => (
@@ -19,9 +20,9 @@ const InfoSection = ({ title, children }) => (
 const InfoChipList = ({ items }) => (
   <>
     {items.map(({ label, value }, i) => (
-      <Typography key={i} color="white">
+      <div key={i} style={{color: "white", fontWeight: "500"}}>
         {label}: <Chip label={value ?? "N/A"} color="secondary" />
-      </Typography>
+      </div>
     ))}
   </>
 );
@@ -61,9 +62,10 @@ const MovieDetailView = () => {
   if (!movie) return null;
 
   return (
-    <ParentTag>
+    // <ParentTag>
+    
       <PaperTag>
- 
+  
         <Box
           display="flex"
           flexDirection={isMobile || isTablet ? "column" : "row"}
@@ -140,7 +142,7 @@ const MovieDetailView = () => {
           </Box>
         </CardContent>
       </PaperTag>
-    </ParentTag>
+    // </ParentTag>
   );
 };
 

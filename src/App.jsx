@@ -1,38 +1,14 @@
-import './App.css'
-import Home from './pages/home/Home';
-import MovieDetailView from './pages/movieDetails/MovieDetails';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import PrivateRoute from './shared/components/privateRoute/PrivateRoute';
-import LoginPage from './pages/login/Login';
+import './App.css';
+import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import router from './routes/routes';
+import {store} from './app/store'; // if using redux
 
 function App() {
   return (
-    <Router>
-      <Routes>
-  
-        <Route path="/login" element={<LoginPage />} />
-
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/movie-details/:id"
-          element={
-            <PrivateRoute>
-              <MovieDetailView />
-            </PrivateRoute>
-          }
-        />
-
-     
-        <Route path="*" element={<LoginPage />} />
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }
 
