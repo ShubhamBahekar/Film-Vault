@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Box, List, ListItem, ListItemButton } from "@mui/material";
-import { setSearchTerm } from "../../../features/movies/movieSlice";
+import { setSearchTerm } from "../../../features/movies";
 
 const SearchHistory = () => {
   const history = useSelector((state) => state.movies.searchHistory);

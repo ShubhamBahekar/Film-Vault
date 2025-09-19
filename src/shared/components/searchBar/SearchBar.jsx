@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { setSearchTerm, addSearchToHistory } from "../../../features/movies/movieSlice";
+import { setSearchTerm, addSearchToHistory } from "../../../features/movies";
 
 const SearchBar = () => {
   const dispatch = useDispatch();

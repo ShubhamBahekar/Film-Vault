@@ -4,7 +4,7 @@ import MovieCard from "../../shared/components/card/Card";
 import { Box, Stack} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchMovies, setSelectedMovie, selectFilteredMovies } from "../../features/movies/movieSlice";
+import { fetchMovies, setSelectedMovie, selectFilteredMovies } from "../../features/movies";
 import StatusMessage from "../../shared/components/statusMessage/StatusMessage";
 import SearchHistory from "../../shared/components/searchHistory/SearchHistory";
 import CustomButton from "../../shared/components/button/CustomeButton";
