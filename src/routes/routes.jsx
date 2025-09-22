@@ -3,8 +3,8 @@ import Home from "../pages/home/Home"
 import LoginPage from '../pages/login/Login';
 import MovieDetailView from '../pages/movieDetails/MovieDetails';
 import { Navigate, createBrowserRouter } from 'react-router-dom';
-import PublicLayout from '../shared/components/layouts/publicLayout';
-import UserLayout from '../shared/components/layouts/userLayout';
+import PublicLayout from '../shared/layouts/publicLayout';
+import UserLayout from '../shared/layouts/userLayout';
 
 const router = createBrowserRouter([
 

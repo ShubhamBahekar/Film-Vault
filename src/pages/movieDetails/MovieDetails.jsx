@@ -1,8 +1,7 @@
 import { Box, Card, CardContent, CardMedia, Typography, Chip, useMediaQuery } from "@mui/material";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import { ParentTag, PaperTag, FancyDivider } from "./MovieDetails.styles";
-import Header from "../../shared/components/header/Header";
+import "./MovieDetails.Styles.css";
 
 
 const InfoSection = ({ title, children }) => (
@@ -20,9 +19,9 @@ const InfoSection = ({ title, children }) => (
 const InfoChipList = ({ items }) => (
   <>
     {items.map(({ label, value }, i) => (
-      <div key={i} style={{color: "white", fontWeight: "500"}}>
+      <Typography key={i} color="white">
         {label}: <Chip label={value ?? "N/A"} color="secondary" />
-      </div>
+      </Typography>
     ))}
   </>
 );
@@ -62,9 +61,8 @@ const MovieDetailView = () => {
   if (!movie) return null;
 
   return (
-    // <ParentTag>
     
-      <PaperTag>
+      <Box  className="paper-tag">
   
         <Box
           display="flex"
@@ -108,7 +106,7 @@ const MovieDetailView = () => {
             </Typography>
           </Box>
 
-          <FancyDivider />
+     <div className="fancy-divider"></div>
 
       
           <Box
@@ -129,7 +127,7 @@ const MovieDetailView = () => {
             />
           </Box>
 
-          <FancyDivider />
+          <Box className="fancy-divider"></Box>
 
         
           <Box mt={2}>
@@ -141,8 +139,8 @@ const MovieDetailView = () => {
             </Typography>
           </Box>
         </CardContent>
-      </PaperTag>
-    // </ParentTag>
+      </Box>
+    
   );
 };
 

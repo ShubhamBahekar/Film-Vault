@@ -1,14 +1,18 @@
-// import Header from "../../shared/components/header/Header";
 import SearchBar from "../../shared/components/searchBar/SearchBar";
 import MovieCard from "../../shared/components/card/Card";
-import { Box, Stack} from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { fetchMovies, setSelectedMovie, selectFilteredMovies } from "../../features/movies";
+import {
+  fetchMovies,
+  setSelectedMovie,
+  selectFilteredMovies,
+} from "../../features/movies";
 import StatusMessage from "../../shared/components/statusMessage/StatusMessage";
 import SearchHistory from "../../shared/components/searchHistory/SearchHistory";
 import CustomButton from "../../shared/components/button/CustomeButton";
 import { useEffect, useState } from "react";
+import "./Home.styles.css";
 
 const MoviesDisplay = () => {
   const { status } = useSelector((state) => state.movies);
@@ -30,38 +34,30 @@ const MoviesDisplay = () => {
   };
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 12); 
+    setVisibleCount((prev) => prev + 12);
   };
 
   if (status === "loading") return <StatusMessage message="Loading..." />;
-  if (status === "failed") return <StatusMessage message="Error loading movies." />;
+  if (status === "failed")
+    return <StatusMessage message="Error loading movies." />;
 
   return (
     <Box>
-      {/* <Header /> */}
-
-      <Box sx={{ marginTop: "1rem" }}>
-        <Stack
-          direction={"column"}
-          justifyContent="center"
-          alignItems={"center"}
-          spacing={1}
-          padding={"0.2rem"}
-        >
+ 
+      <Box className="movies-container">
+        <Stack className="search-stack">
           <SearchBar />
           <SearchHistory />
         </Stack>
       </Box>
 
-    
       <MovieCard
         movieData={movies.slice(0, visibleCount)}
         onMovieClicked={handleMovieClicked}
       />
 
-    
       {visibleCount < movies.length && (
-        <Box display="flex" justifyContent="center" mt={2}>
+        <Box className="load-more-container">
           <CustomButton label="Load More" onClick={handleLoadMore} />
         </Box>
       )}
@@ -70,4 +66,3 @@ const MoviesDisplay = () => {
 };
 
 export default MoviesDisplay;
-

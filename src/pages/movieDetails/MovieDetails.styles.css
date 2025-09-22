@@ -1,0 +1,32 @@
+
+.paper-tag {
+  padding: 0%;
+  background: var(--gradient-fancy-background);
+  height: 100vh;
+  max-height: 100%;
+  overflow: auto;
+  text-transform: capitalize;
+  width: 100%;
+  border-radius: 0; 
+  
+}
+
+
+@media (min-width: 900px) { 
+  .paper-tag {
+    border-radius: 1rem;
+  }
+}
+
+@media (min-width: 1200px) { 
+  .paper-tag {
+    border-radius: 1rem;
+  }
+}
+
+.fancy-divider {
+  height: 4px;
+  background: var(--gradient-divider);
+  border-radius: 2px;
+  margin-bottom: 4px;
+}

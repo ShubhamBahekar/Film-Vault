@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../../features/auth/authSlice";
 import { useNavigate } from "react-router-dom";
-import { Box, TextField,Typography } from "@mui/material";
+import { Box, TextField, Typography } from "@mui/material";
 import CustomButton from "../../shared/components/button/CustomeButton";
+import "./Login.styles.css";
 
 const InputField = ({ label, type = "text", value, onChange }) => (
   <TextField
@@ -11,7 +12,7 @@ const InputField = ({ label, type = "text", value, onChange }) => (
     type={type}
     variant="outlined"
     fullWidth
-    sx={{ mb: 2, bgcolor: "white", borderRadius: "0.5rem" }}
+    className="input-field"
     value={value}
     onChange={onChange}
   />
@@ -36,19 +37,12 @@ const LoginPage = () => {
   };
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-      bgcolor="#3D3539"
-      flexDirection="column"
-    >
-      <Typography variant="h4" color="white" mb={3}>
+    <Box className="login-container">
+      <Typography variant="h2" className="login-title">
         Login
       </Typography>
 
-      <Box width="20rem">
+      <Box className="login-box">
         <InputField
           label="Username"
           value={form.username}
@@ -65,7 +59,7 @@ const LoginPage = () => {
       <CustomButton
         label="Login"
         onClick={handleLogin}
-        sx={{ borderRadius: "0.5rem", px: 4 }}
+        className="login-button"
       />
     </Box>
   );

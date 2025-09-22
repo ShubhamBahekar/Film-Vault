@@ -2,7 +2,7 @@ import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import router from './routes/routes';
-import {store} from './app/store'; // if using redux
+import {store} from './app/store';
 
 function App() {
   return (

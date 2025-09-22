@@ -1,0 +1,19 @@
+
+.movies-container {
+  margin-top: 1rem;
+}
+
+.search-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem; 
+  padding: 0.2rem;
+}
+
+.load-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
